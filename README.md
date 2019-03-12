@@ -1,2 +1,2 @@
 # bashrc
-My personal bashrc file
+My personal bashrc file, called from .bashrc.
