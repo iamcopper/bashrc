@@ -24,7 +24,7 @@ export PATH="${PATH}:${GOPATH}/bin"
 complete -C /home/kang.pan/go/bin/gocomplete go
 
 # Git Config
-if type git > /dev/null && ! git config --get user.name > /dev/null
+if type git > /dev/null 2>&1 && ! git config --get user.name > /dev/null 2>&1
 then
 	# default user name and email
 	git config --global user.name iamcopper
