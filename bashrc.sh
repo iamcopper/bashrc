@@ -26,7 +26,7 @@ complete -C /home/kang.pan/go/bin/gocomplete go
 # Git Config
 if type git > /dev/null 2>&1 && ! git config --get user.name > /dev/null 2>&1
 then
-	# default user name and email
+	# set default user name and email
 	git config --global user.name iamcopper
 	git config --global user.email kangpan519@gmail.com
 
