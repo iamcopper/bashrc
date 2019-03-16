@@ -7,7 +7,12 @@
 # Git Config
 function set_git_config()
 {
-	if type git > /dev/null 2>&1 && ! git config --get user.name > /dev/null 2>&1
+	if [[ -f ${HOME}/.gitconfig ]]
+	then
+		return
+	fi
+
+	if type git > /dev/null 2>&1
 	then
 		# set default user name and email
 		git config --global user.name iamcopper
@@ -44,10 +49,7 @@ function set_http_proxy()
 # set the iol (ipmitool over lan) shotcut
 function set_iol_shotcut()
 {
-	if type ipmitool > /dev/null 2>&1
-	then
-		alias iol='ipmitool -I lanplus -U administrator -P advantech -H'
-	fi
+	alias iol='ipmitool -I lanplus -U administrator -P advantech -H'
 }
 
 export LANG=C
@@ -61,6 +63,9 @@ do
 		go        ) set_go_env;;
 		httpproxy ) set_http_proxy;;
 		ipmitool  ) set_iol_shotcut;;
-		ipmicore  ) . setup_ipmicore_env.sh;;
+		ipmicore  )
+			DIR=$(dirname ${BASH_SOURCE[0]})
+			. ${DIR}/setup_ipmicore_env.sh
+			;;
 	esac
 done
