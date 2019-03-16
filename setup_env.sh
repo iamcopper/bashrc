@@ -54,7 +54,7 @@ export LANG=C
 
 alias vi='vim'
 
-for (( i = 1; i < $#; i++ ));
+for (( i = 1; i <= $#; i++ ));
 do
 	case ${!i} in
 		git       ) set_git_config;;
