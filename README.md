@@ -1,8 +1,17 @@
 # bashrc
-My personal bashrc file, called from .bashrc.
+Personal bashrc file, called from .bashrc.
 
-#### bashrc.sh
-common bash setup script
+#### setup_env.sh
+Set bash evn script, can support several parameters to setup different component configuration.
+usage:
+```
+setup_env.sh \
+	[git] \
+	[go] \
+	[httpproxy] \
+	[ipmitool] \
+	[ipmicore]
+```
 
-#### bashrc_ipmi.sh
-bash setup script for ipmi development environment
+#### setup_ipmicore_env.sh
+Set bash evn script only for ipmicore development.
