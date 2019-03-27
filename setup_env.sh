@@ -63,8 +63,8 @@ do
 		go        ) set_go_env;;
 		ipmitool  ) set_iol_shotcut;;
 		ipmicore  )
-			DIR=$(dirname ${BASH_SOURCE[0]})
-			. ${DIR}/setup_ipmicore_env.sh
+			curdir=$(dirname ${BASH_SOURCE[0]})
+			. ${curdir}/setup_ipmicore_env.sh
 			;;
 	esac
 done
