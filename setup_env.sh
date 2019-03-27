@@ -4,17 +4,15 @@
 # personal bashrc
 #
 
+proxy_host=$(echo ${SSH_CLIENT} | awk '{print $1}')
+proxy_port=1080
+http_proxy="http://${proxy_host}:${proxy_port}"
+
 # Git Config
 function set_git_config()
 {
-	local proxy_host=$(echo ${SSH_CLIENT} | awk '{print $1}')
-	local proxy_port=1080
-
 	if [[ -f ${HOME}/.gitconfig ]]
 	then
-		git config --global http.proxy ${proxy_host}:${proxy_port}
-		git config --global https.proxy ${proxy_host}:${proxy_port}
-
 		return
 	fi
 
@@ -26,11 +24,8 @@ function set_git_config()
 		git config --global push.default matching
 		git config --global core.editor vim
 
-		git config --global http.proxy ${proxy_host}:${proxy_port}
-		git config --global https.proxy ${proxy_host}:${proxy_port}
-
 		# using SSH instead of HTTPS
-		git config --global url.git@:.insteadOf https://
+#		git config --global url.git@:.insteadOf https://
 	fi
 }
 
@@ -43,6 +38,14 @@ function set_go_env()
 
 	# gocomplete (bash complete for go)
 	complete -C /home/kang.pan/go/bin/gocomplete go
+
+	#Set http proxy for go get over the Wall
+	export http_proxy=${http_proxy}
+	export https_proxy=${http_proxy}
+
+	#Set git proxy for go get over the Wall
+	git config --global http.proxy ${http_proxy}
+	git config --global https.proxy ${http_proxy}
 }
 
 # ipmitool
