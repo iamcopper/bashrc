@@ -8,7 +8,6 @@ usage:
 setup_env.sh \
 	[git] \
 	[go] \
-	[httpproxy] \
 	[ipmitool] \
 	[ipmicore]
 ```
