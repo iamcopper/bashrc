@@ -34,17 +34,6 @@ function set_go_env()
 	complete -C /home/kang.pan/go/bin/gocomplete go
 }
 
-# http proxy
-# Set the ssh client as the http proxy host
-function set_http_proxy()
-{
-	local proxy_host=$(echo ${SSH_CLIENT} | awk '{print $1}')
-	local proxy_port=1080
-
-	export http_proxy="http://${proxy_host}:${proxy_port}"
-	export https_proxy="http://${proxy_host}:${proxy_port}"
-}
-
 # ipmitool
 # set the iol (ipmitool over lan) shotcut
 function set_iol_shotcut()
@@ -61,7 +50,6 @@ do
 	case ${!i} in
 		git       ) set_git_config;;
 		go        ) set_go_env;;
-		httpproxy ) set_http_proxy;;
 		ipmitool  ) set_iol_shotcut;;
 		ipmicore  )
 			DIR=$(dirname ${BASH_SOURCE[0]})
