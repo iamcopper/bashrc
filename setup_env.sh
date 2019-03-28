@@ -23,9 +23,6 @@ function set_git_config()
 
 		git config --global push.default matching
 		git config --global core.editor vim
-
-		# using SSH instead of HTTPS
-#		git config --global url.git@:.insteadOf https://
 	fi
 }
 
