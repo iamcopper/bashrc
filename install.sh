@@ -1,32 +1,75 @@
 #!/bin/bash
 
-function setup_vim()
+function install_vim()
 {
+	if type vim &> /dev/null; then
+		echo "vim has already installed."
+		return
+	fi
+
 	apt install -y vim ctags
 }
 
-function setup_git()
+function install_git()
 {
+	if type git &> /dev/null; then
+		echo "git has already installed."
+		return
+	fi
+
 	apt install -y git
+
+	git config --global user.name iamcopper
+	git config --global user.email kangpan519@gmail.com
+
+	git config --global push.default matching
+	git config --global core.editor vim
 }
 
-function setup_go()
+function install_go()
 {
-	local goversion=1.12.1
-	local gopackage=go${goversion}.linux-amd64.tar.gz
+	if type go &> /dev/null; then
+		echo "go has already installed."
+		return
+	fi
+
+	local goversion="1.12.1"
+	local gopackage="go${goversion}.linux-amd64.tar.gz"
 
 	wget -P /tmp https://dl.google.com/go/${gopackage} \
 	&& tar -C /usr/local -zxf /tmp/${gopackage} \
 	&& rm /tmp/${gopackage}
 }
 
-function setup_docker()
+# install go bash complete
+function install_gocomplete()
 {
+	if type gocomplete &> /dev/null; then
+		echo "gocomplete has already installed."
+		return
+	fi
+
+	go get -u github.com/posener/complete/gocomplete
+	gocomplete -install
+}
+
+function install_docker()
+{
+	if type docker &> /dev/null; then
+		echo "docker has already installed."
+		return
+	fi
+
 	apt install -y docker
 }
 
-function setup_ipmitool()
+function install_ipmitool()
 {
+	if type ipmitool &> /dev/null; then
+		echo "ipmitool has already installed."
+		return
+	fi
+
 	apt install -y ipmitool
 }
 
@@ -42,18 +85,23 @@ if [[ ! -f /etc/apt/sources.list ]]; then
 	exit -1
 fi
 
-sed -i 's/archive.ubuntu.com/mirrors.163.com/g' \
-	/etc/apt/sources.list
-
-apt-get update && apt-get upgrade -y
-
 for (( i = 1; i <= $#; i++ ));
 do
 	case ${!i} in
-		vim       ) setup_vim;;
-		git       ) setup_git;;
-		go        ) setup_go;;
-		docker    ) setup_docker;;
-		ipmitool  ) setup_ipmitool;;
+		vim)
+			install_vim;;
+		git)
+			install_git;;
+		go)
+			install_go
+			. setup_env.sh go
+			install_gocomplete
+			;;
+		docker)
+			install_docker;;
+		ipmitool)
+			install_ipmitool;;
 	esac
+
+	. setup_env.sh ${!i}
 done
