@@ -7,7 +7,7 @@ function install_git()
 		return
 	fi
 
-	apt install -y git
+	sudo apt install -y git
 
 	git config --global user.name iamcopper
 	git config --global user.email kangpan519@gmail.com
@@ -28,7 +28,7 @@ function install_vim()
 		install_git
 	fi
 
-	apt install -y vim ctags
+	sudo apt install -y vim ctags
 	
 	mkdir -p ${vim_path}
 	git clone  git@github.com:iamcopper/vimcfg.git ${vim_path}
@@ -74,7 +74,7 @@ function install_docker()
 		return
 	fi
 
-	apt install -y docker
+	sudo apt install -y docker
 
 	# TODO
 }
@@ -86,13 +86,8 @@ function install_ipmitool()
 		return
 	fi
 
-	apt install -y ipmitool
+	sudo apt install -y ipmitool
 }
-
-if [[ ${UID} -ne 0 ]]; then
-	echo "Error: Required root permission"
-	exit -1
-fi
 
 if [[ ${SHELL} != "/bin/bash" ]]; then
 	echo "Error: Not BASH Shell"
