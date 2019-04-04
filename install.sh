@@ -104,6 +104,8 @@ if [[ ! -f /etc/apt/sources.list ]]; then
 	exit -1
 fi
 
+curdir=$(dirname ${BASH_SOURCE[0]})
+
 for (( i = 1; i <= $#; i++ ));
 do
 	case ${!i} in
@@ -114,5 +116,5 @@ do
 		ipmitool  ) install_ipmitool;;
 	esac
 
-	. setup_env.sh ${!i}
+	. ${curdir}/setup_env.sh ${!i}
 done
