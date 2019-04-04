@@ -32,10 +32,7 @@ function install_vim()
 	
 	mkdir -p ${vim_path}
 	git clone  git@github.com:iamcopper/vimcfg.git ${vim_path}
-
-	cd ${vim_path}
-	. ~/repos/vimcfg/install.sh
-	cd -
+	bash ${vim_path}/install.sh
 
 	vim "+:PluginInstall" "+:qa"
 }
@@ -92,13 +89,16 @@ function install_ipmitool()
 	apt install -y ipmitool
 }
 
-# Required root permission
 if [[ ${UID} -ne 0 ]]; then
 	echo "Error: Required root permission"
 	exit -1
 fi
 
-# Only support Debain like system
+if [[ ${SHELL} != "/bin/bash" ]]; then
+	echo "Error: Not BASH Shell"
+	exit -1
+fi
+
 if [[ ! -f /etc/apt/sources.list ]]; then
 	echo "Error: Not a Debain like system (debain, ubuntu ...)"
 	exit -1
