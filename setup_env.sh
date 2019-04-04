@@ -16,10 +16,7 @@ function set_go()
 	export GOPATH="${HOME}/go"
 	export PATH="${PATH}:${GOROOT}/bin:${GOPATH}/bin"
 
-	# gocomplete (bash complete for go)
-	if type gocomplete &> /dev/null; then
-		complete -C /home/kang.pan/go/bin/gocomplete go
-	fi
+	complete -C /home/kang.pan/go/bin/gocomplete go
 
 	#Set http proxy for go get over the Wall
 	local proxy_host=$(echo ${SSH_CLIENT} | awk '{print $1}')
