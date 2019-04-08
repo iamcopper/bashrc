@@ -10,7 +10,9 @@ usage:
 ```
 setup_env.sh \
 	[git] \
+	[vim] \
 	[go] \
+	[proxy] \
 	[ipmitool] \
 	[ipmicore]
 ```
