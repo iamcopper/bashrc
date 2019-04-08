@@ -1,5 +1,10 @@
 #!/bin/bash
 
+if ! type git &> /dev/null; then
+	echo -e "\n>>> ERR: Please install GIT firstly.\n"
+	return 0;
+fi
+
 echo -e "\n>>> GO installed start.\n"
 
 # install go
