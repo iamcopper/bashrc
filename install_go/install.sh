@@ -7,18 +7,20 @@ fi
 
 echo -e "\n>>> GO installed start.\n"
 
+goversion="1.12.1"
+gopackage="go${goversion}.linux-amd64.tar.gz"
+
 # install go
 if ! type go &> /dev/null; then
-	local goversion="1.12.1"
-	local gopackage="go${goversion}.linux-amd64.tar.gz"
-
 	wget -P /tmp https://dl.google.com/go/${gopackage} \
-		&& tar -C /usr/local -zxf /tmp/${gopackage} \
+		&& sudo tar -C /usr/local -zxvf /tmp/${gopackage} \
 		&& rm /tmp/${gopackage}
 
 	export GOROOT="/usr/local/go"
 	export GOPATH="${HOME}/go"
 	export PATH="${PATH}:${GOROOT}/bin:${GOPATH}/bin"
+
+	mkdir -p ${GOPATH}
 fi
 
 # install go bash complete
