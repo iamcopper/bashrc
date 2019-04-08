@@ -7,7 +7,7 @@ function set_vim()
 
 function set_git()
 {
-	return
+	return 0
 }
 
 function set_go()
@@ -17,7 +17,10 @@ function set_go()
 	export PATH="${PATH}:${GOROOT}/bin:${GOPATH}/bin"
 
 	complete -C /home/kang.pan/go/bin/gocomplete go
+}
 
+function set_proxy()
+{
 	#Set http proxy for go get over the Wall
 	local proxy_host=$(echo ${SSH_CLIENT} | awk '{print $1}')
 	local proxy_port=1080
@@ -32,7 +35,7 @@ function set_go()
 
 function set_docker()
 {
-	return
+	return 0
 }
 
 function set_ipmitool()
@@ -48,6 +51,7 @@ do
 		vim       ) set_vim;;
 		git       ) set_git;;
 		go        ) set_go;;
+		proxy     ) set_proxy;;
 		docker    ) set_docker;;
 		ipmitool  ) set_ipmitool;;
 		ipmicore  )
