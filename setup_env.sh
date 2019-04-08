@@ -55,8 +55,8 @@ do
 		docker    ) set_docker;;
 		ipmitool  ) set_ipmitool;;
 		ipmicore  )
-			curdir=$(dirname ${BASH_SOURCE[0]})
-			. ${curdir}/setup_ipmicore_env.sh
+			CURPATH=$(dirname ${BASH_SOURCE[0]})
+			. ${CURPATH}/setup_ipmicore_env.sh
 			;;
 	esac
 done

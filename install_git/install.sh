@@ -12,5 +12,5 @@ git config --global core.editor vim
 
 echo -e "\n>>> GIT installed finished.\n"
 
-echo -e "\n>>> Please add the rsa-key of github manually,\n"
-echo -e "\n>>> then we can use ssh protocol to git clone from github.\n"
+echo -e ">>> WARN: Please add the rsa-key of github manually,"
+echo -e ">>> then we can use ssh protocol to git clone from github."

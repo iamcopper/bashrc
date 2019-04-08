@@ -4,6 +4,8 @@ echo -e "\n>>> VIM installed started\n"
 
 sudo apt install -y vim ctags
 
+CURPATH=$(dirname ${BASH_SOURCE[0]})
+
 # copy files
 if [[ -d ~/.vim/bundle ]]; then
 	plug_num=$(ls -l ~/.vim/bundle | wc -l)
@@ -12,11 +14,11 @@ else
 	plug_num=0
 fi
 if [[ $plug_num -le 2 ]]; then
-	git clone git@//github.com:VundleVim/Vundle.vim.git ./vimfile/bundle/Vundle.vim
-	cp -r ./vimfile ~/.vim
+	git clone git@github.com:VundleVim/Vundle.vim.git ${CURPATH}/vimfile/bundle/Vundle.vim
+	cp -r ${CURPATH}/vimfile ~/.vim
 fi
 
-cp ./vimrc ~/.vimrc
+cp ${CURPATH}/vimrc ~/.vimrc
 
 # The deoplete.nvim plugin is rely on the neovim/pynvim,
 # so install it first.
