@@ -16,6 +16,8 @@ function set_go()
 	export GOPATH="${HOME}/go"
 	export PATH="${PATH}:${GOROOT}/bin:${GOPATH}/bin"
 
+	export GOPROXY="https://goproxy.io"
+
 	complete -C /home/kang.pan/go/bin/gocomplete go
 }
 
