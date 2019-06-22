@@ -45,12 +45,6 @@ function set_ipmitool()
 	alias iol='ipmitool -I lanplus -U administrator -P advantech -H'
 }
 
-function set_nova4kpro()
-{
-	nova4kpro_path="${HOME}/4kpro/toolchain"
-	export PATH="${PATH}:${nova4kpro_path}/arm-linux-gnueabihf-5.4.1/bin/"
-}
-
 export LANG=C
 
 for (( i = 1; i <= $#; i++ ));
@@ -66,6 +60,5 @@ do
 			CURPATH=$(dirname ${BASH_SOURCE[0]})
 			. ${CURPATH}/setup_ipmicore_env.sh
 			;;
-		nova4kpro ) set_nova4kpro;;
 	esac
 done
