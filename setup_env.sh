@@ -45,8 +45,12 @@ function set_ipmitool()
 	alias iol='ipmitool -I lanplus -U administrator -P advantech -H'
 }
 
-#export LANG=C
-export LANG="zh_CN.UTF-8"
+
+#export LANG="zh_CN.UTF-8"
+export LANG=C
+
+#Fix Chinese characters in git log garbled
+export LESSCHARSET=utf-8
 
 for (( i = 1; i <= $#; i++ ));
 do
