@@ -16,7 +16,7 @@ function set_go()
 	export GOPATH="${HOME}/go"
 	export PATH="${PATH}:${GOROOT}/bin:${GOPATH}/bin"
 
-	export GOPROXY="https://goproxy.io"
+#	export GOPROXY="https://goproxy.io"
 
 	complete -C /home/kang.pan/go/bin/gocomplete go
 }
@@ -45,7 +45,8 @@ function set_ipmitool()
 	alias iol='ipmitool -I lanplus -U administrator -P advantech -H'
 }
 
-export LANG=C
+#export LANG=C
+export LANG="zh_CN.UTF-8"
 
 for (( i = 1; i <= $#; i++ ));
 do
