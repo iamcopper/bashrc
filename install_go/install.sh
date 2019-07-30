@@ -7,7 +7,7 @@ fi
 
 echo -e "\n>>> GO installed start.\n"
 
-goversion="1.12.1"
+goversion="1.12.7"
 gopackage="go${goversion}.linux-amd64.tar.gz"
 
 # install go
