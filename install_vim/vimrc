@@ -152,7 +152,6 @@ let g:tagbar_left=1
 let g:NERDTreeWinPos="right"
 let g:NERDTreeWinSize=25
 let g:NERDTreeShowLineNumbers=1
-let g:NERDTreeQuitOnOpen=1
 " vim-airline (only for xterm)
 set term=xterm-256color
 let g:airline_theme='badwolf'
