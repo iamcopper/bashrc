@@ -127,10 +127,6 @@ nnoremap <C-j> <C-W>j
 nnoremap <C-k> <C-W>k
 nnoremap <C-l> <C-W>l
 
-" "cd" to change to open directory
-let OpenDir=system("pwd")
-nmap <silent> <leader>cd :exe 'cd ' . OpenDir<cr>:pwd<cr>
-
 nmap  <F2> :TagbarToggle<cr>
 nmap  <F3> :NERDTreeToggle<cr>
 nmap  <F4> :MRU<cr>
