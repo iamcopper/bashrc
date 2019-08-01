@@ -127,6 +127,9 @@ nnoremap <C-j> <C-W>j
 nnoremap <C-k> <C-W>k
 nnoremap <C-l> <C-W>l
 
+" Using Ctrl+D to switch bash and vim
+nmap <C-D> :sh<cr>
+
 nmap  <F2> :TagbarToggle<cr>
 nmap  <F3> :NERDTreeToggle<cr>
 nmap  <F4> :MRU<cr>
