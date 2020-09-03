@@ -158,7 +158,7 @@ let g:airline_theme='badwolf'
 let g:deoplete#enable_at_startup = 1
 " deoplete-clang
 let g:deoplete#sources#clang#libclang_path = "/usr/lib/libclang.so"
-let g:deoplete#sources#clang#clang_header = "/usr/lib/clang/7.0.1/include"
+let g:deoplete#sources#clang#clang_header = "/usr/lib/clang_include"
 " DoxygenToolkit.vim
 let g:DoxygenToolkit_briefTag_pre=""
 let g:DoxygenToolkit_paramTag_pre="\\param   "
